@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Interactive Map</title>
+      <title>Home</title>
       <link rel="stylesheet" href="scripts/style.css">
       <script src="scripts/script.js"></script>
     </head>
     <body>
-      <ul>
+      <ul class="Navi">
         <li><a href="index.html">Home</a></li>
         <li><a href="map.html">Map</a></li>
-        <li><a href="table.html">Table</a></li>
         <li><a href="accessibility.html">Settings</a></li>
         <li style="float: right;"><a href="about.html">About</a></li>
       </ul>
-      <h1>Interactive Map</h1>
+      <h1>Underground Interactive Map</h1>
+      <div class="routeFinder" id="routeFinder">
+        <h2 class="instructionText">Select a start station:</h2>
+      </div>
+      <ul class="lineSelector">
+        <button class="bakerloo" onclick="selectLine(bakerlooLine)">Bakerloo</button>
+        <button class="central" onclick="selectLine(centralLine)">Central</button>
+        <button class="circle" onclick="selectLine(circleLine)">Circle</button>
+        <button class="district">District</button>
+        <button class="hammersmith">Hammersmith and City</button>
+        <button class ="jubilee">Jubilee</button>
+        <button class="metropolitan">Metropolitan</button>
+        <button class="northern">Northern</button>
+        <button class="piccadilly">Piccadilly</button>
+        <button class="victoria">Victoria</button>
+        <button class="DLR">DLR</button>
+        <button class="waterloo">Waterloo and City</button>
+        <button class="clearer" onclick="clearText('stationSelector')">Clear</button>
+      </ul>
+
+      <div class="stationSelector" id="stationSelector">
+      </div>
+
+      <img src="scripts/London Tube Map.png" class="mapImage" alt="London Tube Map"></img>
+
     </body>
 </html>
