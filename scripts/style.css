@@ -1,16 +1,121 @@
-/* Text CSS */
+/* Main CSS */
 body {
   background-image: url('background.png');
-  background-size: cover;
+  background-repeat: repeat-y;
+  font-size: 22px;
 }
 
 h1 {
   text-align: center;
 }
 
+h2 {
+  text-align: center;
+}
+
+.stationSelector p {
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: center;
+  display: block;
+  background-color: lightgrey;
+
+  border: 1px solid black;
+  padding: 10px 24px;
+  display: block;
+}
+
+.stationSelector button {
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: center;
+  display: block;
+  color: white;
+  background-color: black;
+}
+
+.lineSelector {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.mapImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+
+/* Button CSS */
+button {
+  border-radius: 12px;
+  font-size: 22px;
+  color: black;
+}
+
+.bakerloo {
+  background-color: rgb(159,102,74);
+  color: white;
+}
+
+.central {
+  background-color: rgb(255,26,0);
+  color: white;
+}
+
+.circle {
+  background-color: rgb(255,230,0);
+}
+
+.district {
+  background-color: rgb(0,125,64);
+  color: white;
+}
+
+.hammersmith {
+  background-color: rgb(247,104,152);
+  color: white;
+}
+
+.jubilee {
+  background-color: rgb(150,142,136);
+  color: white;
+}
+
+.metropolitan {
+  background-color: rgb(98,1,57);
+  color: white;
+}
+
+.northern {
+  background-color: rgb(0,0,0);
+  color: white;
+}
+
+.piccadilly {
+  background-color: rgb(15,35,140);
+  color: white;
+}
+
+.victoria {
+  background-color: rgb(31,131,185);
+  color: white;
+}
+
+.DLR {
+  background-color: rgb(0,87,88);
+  color: white;
+}
+
+.waterloo {
+  background-color: rgb(125,203,165);
+}
+
 
 /* Navigation Bar CSS */
-ul {
+.Navi {
   list-style-type: none;
   margin: 0;
   padding: 0;
