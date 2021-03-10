@@ -1,0 +1,67 @@
+#mapid { height: 180px; }
+
+.Navi {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  margin-bottom: 10px;
+}
+
+li a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+a:hover{
+  background-color: lightgrey;
+  color: black;
+}
+
+h2 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+.section {
+  float: left;
+  border: darkred 3px solid;
+  height: 400px;
+  width: 49%;
+  background-color: white;
+}
+
+.mainSection {
+  float: left;
+  border: darkred 3px solid;
+  height: 300px;
+  width: 100%;
+  background-color: white;
+}
+
+.slidecontainer{
+  width: 300px;
+}
+
+.slider {
+  margin-top: -10px;
+  margin-left: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}

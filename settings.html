@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body onload="loadRefactor()">
+    <ul class="Navi">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li style="float: right;"><a>Settings</a></li>
+    </ul>
+
+    <div class="mainSection test" id="four">
+      <h2>Instructions</h2>
+      <p>SAMPLE TEXT</P>
+    </div>
+    <div class="section test">
+      <h2>Text Settings</h2>
+      <div class="slidecontainer">
+        <p>Text Size: <span id="demo"></span></p>
+        <input type="range" min="8" max="36" value="16" class="slider" id="textSizeSlider">
+      </div>
+      <div>
+        <p>Text Colour:</p>
+        <button class="textColourChanger" onclick="setTextColour('black')">Black</button>
+        <button class="textColourChanger" onclick="setTextColour('white')">White</button>
+        <button class="textColourChanger" onclick="setTextColour('red')">Red</button>
+        <button class="textColourChanger" onclick="setTextColour('green')">Green</button>
+        <button class="textColourChanger" onclick="setTextColour('blue')">Blue</button>
+        <button class="textColourChanger" onclick="setTextColour('yellow')">Yellow</button>
+        <button class="textColourChanger" onclick="setTextColour('purple')">Purple</button>
+        <button class="textColourChanger" onclick="setTextColour('brown')">Brown</button>
+      </div>
+    </div>
+    <div class="section test">
+      <h2>Background Settings</h2>
+      <p>Background Colour: </p>
+      <button class="bgColourChanger" onclick="setBackgroundColor('black')">Black</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('white')">White</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('red')">Red</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('green')">Green</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('blue')">Blue</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('yellow')">Yellow</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('purple')">Purple</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('brown')">Brown</button>
+    </div>
+
+    <script src="format.js"></script>
+  </body>
+</html>
