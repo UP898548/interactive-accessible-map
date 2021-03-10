@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Home</title>
-      <link rel="stylesheet" href="scripts/style.css">
-      <script src="scripts/script.js"></script>
-    </head>
-    <body>
-      <ul class="Navi">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="map.html">Map</a></li>
-        <li><a href="table.html">Table</a></li>
-        <li><a href="accessibility.html">Settings</a></li>
-        <li style="float: right;"><a href="about.html">About</a></li>
-      </ul>
-      <h1>Underground Interactive Map</h1>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+    <script href="format.js"></script>
+  </head>
+  <body>
+    <ul class="Navi">
+      <li><a href="index.html">Home</a></li>
+      <li><a>Map</a></li>
+      <li style="float: right;"><a href="settings.html">Settings</a></li>
+    </ul>
 
-    </body>
+    <div id='map' style='width: 100%; height: 400px;'></div>
+    <script src="mapCode.js"></script>
+  </body>
 </html>
