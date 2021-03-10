@@ -8,15 +8,11 @@ Will mark off below when each stage is completed
 Main Pages using CSS and HTML
 - index for main page
 - map page for main functionality
-- different view for map (e.g. table)
 - accessibility options page (ensure changes effect entire site)
 
 Map and Routes code in JavaScript
-- Objects (Map, Station and Table)
-- Create 2 route finder methods (Use selects start and end)
-  - User defined route
-  OR
-  - Automatic Route Selection Algorithm
+- Objects (MapBoxGl Map + Settings page)
+- Allow user to toggle visibility of each line / visibility of station markers
 
 UI Design
 - Clean and Clear
@@ -24,3 +20,6 @@ UI Design
 - Simple colour backgrounds to allow CSS to change easily
 
 --- Current Completion ---
+- MapBoxGl Map Implemented
+- Cookies are currently being implemented to deal with cross site refactoring
+- Next will be map changes with buttons / toggling markers.
