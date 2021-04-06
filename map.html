@@ -1,19 +1,33 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
   <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="style.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
-    <script href="format.js"></script>
+    <script src="format.js"></script>
   </head>
-  <body>
+  <body onload="loadRefactor()">
     <ul class="Navi">
       <li><a href="index.html">Home</a></li>
       <li><a>Map</a></li>
       <li style="float: right;"><a href="settings.html">Settings</a></li>
     </ul>
 
-    <div id='map' style='width: 100%; height: 400px;'></div>
+    <div id='map'></div>
+
+    <div class="mapControls">
+      <div class="markerControls test">
+        <h2>Marker Controls</h2>
+      </div>
+
+      <div class="lineControls test">
+        <h2>Line Controls</h2>
+        <ul id="lines"></ul>
+      </div>
+    </div>
+
     <script src="mapCode.js"></script>
   </body>
 </html>

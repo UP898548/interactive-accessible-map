@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="style.css">
   </head>
-  <body onload="loadRefactor()">
+  <body onload="loadRefactor(); createCookies()">
     <ul class="Navi">
       <li><a href="index.html">Home</a></li>
       <li><a href="map.html">Map</a></li>
@@ -12,7 +14,7 @@
 
     <div class="mainSection test" id="four">
       <h2>Instructions</h2>
-      <p>SAMPLE TEXT</P>
+      <p>Use the <strong>Buttons and Sliders</strong> to change the basic design of all pages to fit your needs. Text settings affect all text on all pages whereas background settings modify the background design of all pages. <strong>These changes persist on reloads of pages,</strong> but will not if the user closes and reopens the page.</P>
     </div>
     <div class="section test">
       <h2>Text Settings</h2>
@@ -32,7 +34,7 @@
         <button class="textColourChanger" onclick="setTextColour('brown')">Brown</button>
       </div>
     </div>
-    <div class="section test">
+    <div class="section2 test">
       <h2>Background Settings</h2>
       <p>Background Colour: </p>
       <button class="bgColourChanger" onclick="setBackgroundColor('black')">Black</button>

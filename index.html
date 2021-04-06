@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <link rel="stylesheet" href="style.css">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
-    <script href="format.js"></script>
   </head>
-  <body>
+  <body onload="loadRefactor()">
     <ul class="Navi">
-      <li><a href="index.html">Home</a></li>
-      <li><a>Map</a></li>
+      <li><a>Home</a></li>
+      <li><a href="map.html">Map</a></li>
       <li style="float: right;"><a href="settings.html">Settings</a></li>
     </ul>
+    <div class="Main test">
+      <h1>Instructions</h1>
+      <p class="desc">The Map Page contains an Interactive London Underground Map allowing a user to view all lines and stations within the London Underground.</p>
+      <p class="desc">The Settings Page contains Buttons and Sliders allowing a user to modify and refactor elements within the page, such as the text and backgrounds.</p>
+    </div>
 
-    <div id='map' style='width: 100%; height: 400px;'></div>
-    <script src="mapCode.js"></script>
+    <script src="format.js"></script>
   </body>
 </html>

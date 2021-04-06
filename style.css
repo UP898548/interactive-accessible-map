@@ -29,11 +29,22 @@ h2 {
 }
 
 .section {
-  float: left;
   border: darkred 3px solid;
+  float: left;
   height: 400px;
-  width: 49%;
+  width: 49.8%;
   background-color: white;
+  margin-bottom: 5px;
+}
+
+.section2 {
+  border: darkred 3px solid;
+  margin-right: -4px;
+  float: right;
+  height: 400px;
+  width: 49.8%;
+  background-color: white;
+  margin-bottom: 5px;
 }
 
 .mainSection {
@@ -62,6 +73,36 @@ h2 {
   transition: opacity .2s;
 }
 
-.slider:hover {
-  opacity: 1;
+.Main {
+  border: darkred 5px solid;
+}
+
+.desc {
+  border: darkred 3px solid;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#map {
+  border: darkred 30px solid;
+  width: 90%;
+  height: 500px;
+}
+
+.markerControls {
+  margin-top: 10px;
+  border: darkred 3px solid;
+}
+
+.lineControls {
+  margin-top: 10px;
+  border: darkred 3px solid;
+}
+
+markers {
+
+}
+
+lines {
+  
 }

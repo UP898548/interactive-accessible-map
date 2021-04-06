@@ -1,25 +1,27 @@
-var textSize = document.getElementById("textSizeSlider");
-var output = document.getElementById("demo");
-output.innerHTML = textSize.value;
+function createCookies() {
+  var textSize = document.getElementById("textSizeSlider");
+  var output = document.getElementById("demo");
+  output.innerHTML = textSize.value;
 
-textSize.oninput = function() {
-  output.innerHTML = this.value;
-}
-
-textSize.onchange = function() {
-  var x = document.getElementsByClassName("Navi");
-  var y = document.getElementsByClassName("test");
-
-  for(var i = 0; i < x.length; i++){
-    var font = (this.value.toString()) + "px times";
-    x[i].style.font = font;
-  }
-  for(var i = 0; i < y.length; i++){
-    var font = (this.value.toString()) + "px times";
-    y[i].style.font = font;
+  textSize.oninput = function() {
+    output.innerHTML = this.value;
   }
 
-  document.cookie = "textSize=" + this.value.toString();
+  textSize.onchange = function() {
+    var x = document.getElementsByClassName("Navi");
+    var y = document.getElementsByClassName("test");
+
+    for(var i = 0; i < x.length; i++){
+      var font = (this.value.toString()) + "px times";
+      x[i].style.font = font;
+    }
+    for(var i = 0; i < y.length; i++){
+      var font = (this.value.toString()) + "px times";
+      y[i].style.font = font;
+    }
+
+    document.cookie = "textSize=" + this.value.toString();
+  }
 }
 
 function loadRefactor() {

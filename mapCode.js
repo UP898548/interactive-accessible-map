@@ -6,6 +6,10 @@ var map = new mapboxgl.Map({
   zoom: 10
 });
 
+function tester() {
+
+}
+
 map.on('load', function () {
   map.addSource('lines', {
     'type': 'geojson',
@@ -884,4 +888,208 @@ map.on('load', function () {
     },
     'filter': ['==', 'id', 'victoria']
   })
+});
+
+map.on('idle', function () {
+  // If these two layers have been added to the style,
+  // add the toggle buttons.
+  if (map.getLayer('bakerloo') && map.getLayer('central')) {
+    // Enumerate ids of the layers.
+    var toggleableLayerIds = ['bakerloo', 'central','circle','district','hammersmith','jubilee','metropolitan','northern','piccadilly','victoria'];
+    // Set up the corresponding toggle button for each layer.
+    for (var i = 0; i < toggleableLayerIds.length; i++) {
+      var id = toggleableLayerIds[i];
+      if (!document.getElementById(id)) {
+        // Create a link.
+        var link = document.createElement('button');
+        link.id = id;
+        link.href = '#';
+        link.textContent = id;
+        link.className = 'active';
+        // Show or hide layer when the toggle is clicked.
+        link.onclick = function (e) {
+          var clickedLayer = this.textContent;
+          e.preventDefault();
+          e.stopPropagation();
+
+          var visibility = map.getLayoutProperty(
+          clickedLayer,
+          'visibility'
+        );
+
+        // Toggle layer visibility by changing the layout object's visibility property.
+        if (visibility === 'visible') {
+          map.setLayoutProperty(
+            clickedLayer,
+            'visibility',
+            'none'
+          );
+          this.className = '';
+        } else {
+          this.className = 'active';
+          map.setLayoutProperty(
+            clickedLayer,
+            'visibility',
+            'visible'
+          );
+        }
+
+        if(this.textContent == 'central'){
+          sample = ['centralD', 'centralD2','centralD3'];
+          for(i = 0; i<sample.length; i++){
+            var clickedLayer = sample[i];
+            e.preventDefault();
+            e.stopPropagation();
+
+            var visibility = map.getLayoutProperty(
+            clickedLayer,
+            'visibility'
+          );
+
+          // Toggle layer visibility by changing the layout object's visibility property.
+          if (visibility === 'visible') {
+            map.setLayoutProperty(
+              clickedLayer,
+              'visibility',
+              'none'
+            );
+            this.className = '';
+          } else {
+            this.className = 'active';
+            map.setLayoutProperty(
+              clickedLayer,
+              'visibility',
+              'visible'
+            );
+          }
+        }
+      }
+
+      if(this.textContent == 'district'){
+        sample = ['districtD', 'districtD2'];
+        for(i = 0; i<sample.length; i++){
+          var clickedLayer = sample[i];
+          e.preventDefault();
+          e.stopPropagation();
+
+          var visibility = map.getLayoutProperty(
+          clickedLayer,
+          'visibility'
+        );
+
+        // Toggle layer visibility by changing the layout object's visibility property.
+        if (visibility === 'visible') {
+          map.setLayoutProperty(
+            clickedLayer,
+            'visibility',
+            'none'
+          );
+          this.className = '';
+        } else {
+          this.className = 'active';
+          map.setLayoutProperty(
+            clickedLayer,
+            'visibility',
+            'visible'
+          );
+        }
+      }
+    }
+    if(this.textContent == 'metropolitan'){
+      sample = ['metropolitanD'];
+      for(i = 0; i<sample.length; i++){
+        var clickedLayer = sample[i];
+        e.preventDefault();
+        e.stopPropagation();
+
+        var visibility = map.getLayoutProperty(
+        clickedLayer,
+        'visibility'
+      );
+
+      // Toggle layer visibility by changing the layout object's visibility property.
+      if (visibility === 'visible') {
+        map.setLayoutProperty(
+          clickedLayer,
+          'visibility',
+          'none'
+        );
+        this.className = '';
+      } else {
+        this.className = 'active';
+        map.setLayoutProperty(
+          clickedLayer,
+          'visibility',
+          'visible'
+        );
+      }
+    }
+  }
+  if(this.textContent == 'northern'){
+    sample = ['northernD'];
+    for(i = 0; i<sample.length; i++){
+      var clickedLayer = sample[i];
+      e.preventDefault();
+      e.stopPropagation();
+
+      var visibility = map.getLayoutProperty(
+      clickedLayer,
+      'visibility'
+    );
+
+    // Toggle layer visibility by changing the layout object's visibility property.
+    if (visibility === 'visible') {
+      map.setLayoutProperty(
+        clickedLayer,
+        'visibility',
+        'none'
+      );
+      this.className = '';
+    } else {
+      this.className = 'active';
+      map.setLayoutProperty(
+        clickedLayer,
+        'visibility',
+        'visible'
+      );
+    }
+  }
+}
+if(this.textContent == 'piccadilly'){
+  sample = ['piccadillyD'];
+  for(i = 0; i<sample.length; i++){
+    var clickedLayer = sample[i];
+    e.preventDefault();
+    e.stopPropagation();
+
+    var visibility = map.getLayoutProperty(
+    clickedLayer,
+    'visibility'
+  );
+
+  // Toggle layer visibility by changing the layout object's visibility property.
+  if (visibility === 'visible') {
+    map.setLayoutProperty(
+      clickedLayer,
+      'visibility',
+      'none'
+    );
+    this.className = '';
+  } else {
+    this.className = 'active';
+    map.setLayoutProperty(
+      clickedLayer,
+      'visibility',
+      'visible'
+    );
+  }
+}
+}
+    };
+
+      var layers = document.getElementById('lines');
+      layers.appendChild(link);
+      }
+    }
+  }
 });
