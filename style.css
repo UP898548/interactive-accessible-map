@@ -86,23 +86,23 @@ h2 {
 #map {
   border: darkred 30px solid;
   width: 90%;
+  margin: auto;
   height: 500px;
 }
 
 .markerControls {
-  margin-top: 10px;
   border: darkred 3px solid;
 }
 
 .lineControls {
-  margin-top: 10px;
   border: darkred 3px solid;
 }
 
-markers {
-
-}
-
-lines {
-  
+.marker {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border:1px solid gray;
+    background-color:lightblue;
+    visibility: hidden;
 }
