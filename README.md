@@ -21,5 +21,11 @@ UI Design
 
 --- Current Completion ---
 - MapBoxGl Map Implemented
-- Cookies are currently being implemented to deal with cross site refactoring
-- Next will be map changes with buttons / toggling markers.
+- All Refactoring Cookies implemented
+- Visibility Toggle for all Station Markers + Lines Completed
+- Settings Page Done
+
+--- TO DO ---
+- Finish cleaning up the UI
+- Add Accessibility Info as a <p> tag to each station Popup
+- Colour Code Markers by Accessibility Rating (B/R/O/Y/G)
