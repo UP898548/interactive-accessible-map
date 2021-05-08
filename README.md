@@ -24,8 +24,8 @@ UI Design
 - All Refactoring Cookies implemented
 - Visibility Toggle for all Station Markers + Lines Completed
 - Settings Page Done
+- UI Done
+- Testing Script Created + Successful
 
 --- TO DO ---
-- Finish cleaning up the UI
-- Add Accessibility Info as a <p> tag to each station Popup
-- Colour Code Markers by Accessibility Rating (B/R/O/Y/G)
+- NOTHING
