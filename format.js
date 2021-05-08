@@ -12,15 +12,13 @@ function createCookies() {
     var y = document.getElementsByClassName("test");
 
     for(var i = 0; i < x.length; i++){
-      var font = (this.value.toString()) + "px times";
-      x[i].style.font = font;
+      x[i].style.fontSize = this.value;
     }
     for(var i = 0; i < y.length; i++){
-      var font = (this.value.toString()) + "px times";
-      y[i].style.font = font;
+      y[i].style.fontSize = this.value;
     }
 
-    document.cookie = "textSize=" + this.value.toString();
+    document.cookie = "textSize=" + this.value.toString() + "; SameSite=Lax; Secure";
   }
 }
 
@@ -52,14 +50,14 @@ function loadRefactor() {
     for(var i = 0; i < a.length; i++){
       a[i].style.color = textColour;
     }
-    for(var i = 0; i < a.length; i++){
-      a[i].style.color = textColour;
+    for(var i = 0; i < b.length; i++){
+      b[i].style.color = textColour;
     }
-    for(var i = 0; i < a.length; i++){
-      a[i].style.color = textColour;
+    for(var i = 0; i < c.length; i++){
+      c[i].style.color = textColour;
     }
-    for(var i = 0; i < a.length; i++){
-      a[i].style.color = textColour;
+    for(var i = 0; i < d.length; i++){
+      d[i].style.color = textColour;
     }
   }
 
@@ -88,8 +86,6 @@ function getCookie(name) {
       return decodeURIComponent(cookiePair[1]);
     }
   }
-
-  return null;
 }
 
 function setTextColour(colour) {
@@ -112,13 +108,14 @@ function setTextColour(colour) {
     d[i].style.color = colour;
   }
 
-  document.cookie = "textColour=" + colour;
+  document.cookie = "textColour=" + colour + "; SameSite=Lax; Secure";;
 }
 
 function setBackgroundColor(colour) {
   var a = document.getElementsByClassName("test");
   var b = document.getElementsByClassName("slidecontainer");
-  var c = document.getElementsByClassName("textColourChanger")
+  var c = document.getElementsByClassName("textColourChanger");
+  var d = document.getElementsByClassName("bgColourChanger");
 
 
   for(var i = 0; i < a.length; i++){
@@ -130,5 +127,8 @@ function setBackgroundColor(colour) {
   for(var i = 0; i < c.length; i++){
     c[i].style.backgroundColor = colour;
   }
-  document.cookie = "bgColour=" + colour;
+  for(var i = 0; i < d.length; i++){
+    d[i].style.backgroundColor = colour;
+  }
+  document.cookie = "bgColour=" + colour + "; SameSite=Lax; Secure";;
 }

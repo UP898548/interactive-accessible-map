@@ -9,34 +9,63 @@ var map = new mapboxgl.Map({
 var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-right');
 
+/*
+  For Access Arrays, 0 means no wheelchair access, 1 means ramps, 2 means lifts and 3 means escalators, 4 means transfers only, 5 means both escalators and lifts needed
+
+  For Zone Arrays, the Number represents which zone each station falls into, displayed within the popups alongside the markers on the map
+*/
+
 var bakerlooNames = ['Harrow and Wealdstone', 'Kenton', 'South Kenton', 'North Wembley','Wembley Central', 'Stonebridge Park', 'Harlesden', 'Willesden Junction', 'Kensal Green', "Queen's Park", 'Kilburn Park', 'Maida Vale','Warwick Avenue','Paddington','Edgware Road','Marylebone','Baker Street',"Regent's Park",'Oxford Circus','Piccadilly Circus','Charing Cross','Embankment','Waterloo','Lambeth North','Elephant and Castle']
+var bakerlooAccess = [2, 0, 0, 0, 2, 0, 0, 2, 0, 4, 3, 0, 0, 3, 0, 0, 3, 0, 5, 0, 0, 0, 2, 0, 0];
+var bakerlooZones = [5, 4, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 var centralNames = ['West Ruislip','Ruislip Gardens','South Ruislip','Northolt','Greenford','Perivale','Hanger Lane','North Acton','East Acton','White City',"Shepherd's Bush",'Holland Park','Notting Hill Gate','Queensway','Lancaster Gate','Marble Arch','Bond Street','Oxford Circus','Tottenham Court Road','Holborn','Chancery Lance',"St. Paul's",'Bank','Liverpool Street','Bethnal Green','Mile End','Stratford','Leyton','Leytonstone','Snaresbrook','South Woodford','Woodford','Buckhurst Hill','Loughton','Debden','Theydon Bois','Epping'];
 var centralDNames = ['Ealing Broadway', 'West Acton', 'North Acton'];
 var centralD2Names = ['Leyton', 'Wanstead', 'Redbridge', 'Gants Hill', 'Newbury Park', 'Barkingside', 'Fairlop', 'Hainualt'];
 var centralD3Names = ['South Woodord','Roding Valley','Chigwell','Grange Hill','Hainault'];
+var centralAccess = [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 5, 5, 0, 4, 2, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 3, 0, 3, 2, 1, 0, 2, 1, 1, 0, 0, 2];
+var centralZones = [6, 5, 5, 5, 4, 4, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 4, 5, 6, 6, 6, 6, 3, 3, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4];
 
 var circleNames = ['Hammersmith','Goldhawk Road',"Shepherd's Bush Market",'Wood Lane','Latimer Road','Ladbroke Grove','Westbourne Park','Royal Oak','Paddington','Edgware Road','Baker Street','Great Portland Street','Euston Square',"King's Cross St. Pancras",'Farringdon','Barbican','Moorgate','Liverpool Street','Aldgate','Tower Hill','Monument','Cannon Street','Mansion House','Blackfriars','Temple','Embankment','Westminster',"St. James's Park",'Victoria','Sloane Square','South Kensington','Gloucester Road','High Street Kensington','Notting Hill Gate','Bayswater','Edgware Road'];
+var circleAccess = [1, 0, 0, 2, 0, 0, 0, 0, 2, 4, 0, 0, 2, 2, 2, 0, 4, 5, 0, 2, 5, 2, 0, 2, 0, 0, 2, 0, 2, 3, 4, 0, 4, 0, 0, 0, 4];
+var circleZones = [2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 var districtNames = ['Ealing Broadway','Ealing Common','Acton Town','Chiswick Park','Turnham Green','Stamford Brook','Ravenscourt Park','Hammersmith','Barons Court','West Kensington',"Earl's Court",'Kensington Olympia',"Earl's Court",'South Kensington','Sloane Square','Victoria',"St. James's Park",'Westminster','Embankment','Temple','Blackfriars','Mansion House','Cannon Street','Monument','Tower Hill','Aldgate East','Whitechapel','Stepney Green','Mile End','Bow Road','Bromley-by-Bow','West Ham','Plaistow','Upton Park','East Ham','Barking','Upney','Becontree','Dagenham Heathway','Dagenham East','Elm Park','Hornchurch','Upminster Bridge','Upminster'];
 var districtDNames = ['Richmond','Kew Gardens','Gunnersbury','Turnham Green'];
-var districtD2Names = ['Wimbledon','Wimbledon Park','Southfields','East Putney','Putney Bridge','Parsons Green','Fulham Broadway','West Brompton','High Street Kensington','Notting Hill Gate','Bayswater','Paddington','Edgware Road'];
+var districtD2Names = ['Wimbledon','Wimbledon Park','Southfields','East Putney','Putney Bridge','Parsons Green','Fulham Broadway','West Brompton', "Earl's Court",'High Street Kensington','Notting Hill Gate','Bayswater','Paddington','Edgware Road'];
+var districtAccess = [1, 4, 2, 0, 0, 0, 0, 2, 4, 0, 2, 1, 2, 4, 3, 2, 0, 2, 0, 0, 2, 0, 2, 4, 2, 4, 0, 0, 4, 0, 2, 2, 0, 0, 2, 2, 1, 0, 1, 0, 1, 0, 0, 2, 2, 1, 4, 0, 2, 0, 2, 0, 0, 0, 2, 2, 3, 4, 0, 0, 0, 4];
+var districtZones = [3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 6, 4, 3, 3, 2, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1];
 
 var hammersmithNames = ['Hammersmith','Goldhawk Road',"Shepherd's Bush Market",'Wood Lane','Latimer Road','Ladbroke Grove','Westbourne Park','Royal Oak','Paddington','Edgware Road','Baker Street','Great Portland Street','Euston Square',"King's Cross St. Pancras",'Farringdon','Barbican','Moorgate','Liverpool Street','Aldgate East','Whitechapel','Stepney Green','Mile End','Bow Road','Bromley-by-Bow','West Ham','Plaistow','Upton Park','East Ham','Barking'];
+var hammersmithAccess = [1, 0, 0, 2, 0, 0, 0, 0, 2, 4, 0, 0, 2, 2, 2, 0, 4, 5, 4, 0, 0, 4, 0, 2, 2, 0, 0, 2, 2];
+var hammersmithZones = [2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4];
 
 var jubileeNames = ['Stanmore','Canons Park','Queensbury','Kingsbury','Wembley Park','Neasden','Dollis Hill','Willesden Green','Kilburn','West Hampstead','Finchley Road','Swiss Cottage',"St. John's Wood",'Baker Street','Bond Street','Green Park','Westminster','Waterloo','Southwark','London Bridge','Bermondsey','Canada Water','Canary Wharf','North Greenwich','Canning Town','West Ham','Stratford'];
+var jubileeAccess = [1, 0, 0, 2, 2, 0, 0, 0, 2, 0, 4, 0, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 5, 2, 5];
+var jubileeZones = [5, 5, 4, 4, 4, 3, 3, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3];
 
 var metropolitanNames = ['Amersham','Chalfont and Latimer','Chesham','Chalfont and Latimer','Chorleywood','Rickmansworth','Moor Park','Croxley','Watford','Croxley','Moor Park','Northwood','Northwood Hills','Pinner','North Harrow','Harrow-on-the-Hill','Northwick Park','Preston Road','Wembley Park','Finchley Road','Baker Street','Great Portland Street','Euston Square',"King's Cross St. Pancras",'Farringdon','Barbican','Moorgate','Liverpool Street','Aldgate'];
 var metropolitanDNames = ['Uxbridge','Hillingdon','Ickenham','Ruislip','Ruislip Manor','Eastcote','Rayners Lane','West Harrow','Harrow-on-the-Hill'];
+var metropolitanAccess = [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 4, 0, 0, 2, 4, 0, 0, 2, 2, 2, 0, 4, 5, 0, 1, 2, 0, 1, 0, 0, 4, 0, 4];
+var metropolitanZones = [7, 7, 7, 7, 7, 7, 6, 7, 7, 7, 6, 6, 6, 5, 5, 5, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 6, 6, 6, 6, 6, 5, 5, 5, 5];
 
 var northernNames = ['Edgware','Burnt Oak','Colindale','Hendon Central','Brent Cross','Golders Green','Hampstead','Bellsize Park','Chalk Farm','Camden Town','Mornington Crescent','Euston',"King's Cross St. Pancras",'Angel','Old Street','Moorgate','Bank','London Bridge','Borough','Elephant and Castle','Kennington','Oval','Stockwell','Clapham North','Clapham Common','Clapham South','Balham','Tooting Bec','Tooting Broadway','Colliers Wood','South Wimbledon','Morden'];
 var northernDNames = ['High Barnet','Totteridge and Whetstone','Woodside Park','West Finchley','Finchley Central','Mill Hill East','Finchley Central','East Finchley','Highgate','Archway','Tufnell Park','Kentish Town','Camden Town','Euston','Warren Street','Goodge Street','Tottenham Court Road','Leicester Square','Charing Cross','Embankment','Waterloo','Kennington'];
+var northernAccess = [2, 0, 0, 2, 0, 2, 0, 0, 0, 3, 0, 3, 2, 3, 4, 0, 2, 2, 2, 2, 3, 4, 0, 0, 3, 0, 0, 3, 3, 3, 2, 1, 0, 1, 1, 2, 0, 2, 0, 3, 0, 0, 3, 3, 3, 0, 2, 0, 0, 3, 2, 3, 5, 4];
+var northernZones = [5, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 5, 4, 4, 4, 4, 4, 4, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
-var piccadillyNames = ['Uxbridge','Hillingdon','Ickenham','Ruislip','Ruislip Manor','Eastcote','Rayners Lane','South Harrow','Sudbury Hill','Sudbury Town','Alperton','Park Royal','North Ealing','Ealing Common','Acton Town','Turnham Green','Hammersmith','Barons Court',"Earl's Court",'Gloucester Road','South Kensington','Knightsbridge','Hyde Park Corner','Green Park','Piccadilly Circus','Leicester Square','Covent Garden','Holborn','Russell Square',"King's Cross St. Pancras",'Caledonian Road','Holloway Road','Arsenal','Finsbury Park','Manor House','Turnpike Lane','Wood Green','Bounds Green','Arnos Grove','Southgate','Oakwood','Cockfosters'];
-var piccadillyDNames = ['Heathrow Terminal 5','Heathrow Terminal 1,2,3','Heathrow Terminal 4','Hatton Cross','Heathrow Termianl 1,2,3','Hatton Cross','Hounslow West','Hounslow Central','Hounslow East','Osterley','Boston Manor','Northfields','South Ealing'];
+var piccadillyNames = ['Uxbridge','Hillingdon','Ickenham','Ruislip','Ruislip Manor','Eastcote','Rayners Lane','South Harrow','Sudbury Hill','Sudbury Town','Alperton','Park Royal','North Ealing','Ealing Common','Acton Town','Turnham Green','Hammersmith','Barons Court' ,"Earl's Court",'Gloucester Road','South Kensington','Knightsbridge','Hyde Park Corner','Green Park','Piccadilly Circus','Leicester Square','Covent Garden','Holborn','Russell Square',"King's Cross St. Pancras",'Caledonian Road','Holloway Road','Arsenal','Finsbury Park','Manor House','Turnpike Lane','Wood Green','Bounds Green','Arnos Grove','Southgate','Oakwood','Cockfosters'];
+var piccadillyDNames = ['Heathrow Terminal 5','Heathrow Terminal 1,2,3','Heathrow Terminal 4','Hatton Cross','Heathrow Termianl 1,2,3','Hatton Cross','Hounslow West','Hounslow Central','Hounslow East','Osterley','Boston Manor','Northfields','South Ealing', 'Acton Town'];
+var piccadillyAccess = [1, 2, 0, 1, 0, 0, 4, 0, 0, 1, 0, 0, 0, 4, 2, 0, 2, 4, 2, 0, 0, 0, 3, 2, 0, 0, 0, 0, 0, 2, 2, 0, 0, 2, 0, 0, 3, 3, 0, 3, 2, 0, 2, 2, 2, 0, 2, 0, 2, 0, 2, 0, 0, 0, 0, 2];
+var piccadillyZones = [6, 6, 6, 6, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 6, 6, 6, 5, 6, 5, 5, 4, 4, 4, 4, 3, 3, 3];
 
 var victoriaNames = ['Walthamstow Central','Blackhorse Road','Tottenham Hale','Seven Sisters','Finsbury Park','Highbury and Islington',"King's Cross St. Pancras",'Warren Street','Oxford Circus','Green Park','Victoria','Pimlico','Vauxhall','Stockwell','Brixton'];
+var victoriaAccess = [5, 3, 2, 0, 2, 4, 2, 3, 3, 4, 2, 2, 2, 4, 2];
+var victoriaZones = [3, 3, 3, 3, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2];
+
 var waterlooNames = ['Waterloo', 'Bank'];
+var waterlooAccess = [5, 5];
+var waterlooZones = [1, 1];
 
 var jObject = {
   'type': 'geojson',
@@ -976,17 +1005,14 @@ map.on('idle', function () {
         link.id = id;
         link.href = '#';
         link.textContent = id;
-        link.className = 'active test';
+        link.className = 'test';
         link.onclick = function (e) {
           var clickedLayer = this.textContent;
-          e.preventDefault();
-          e.stopPropagation();
 
           var visibility = map.getLayoutProperty(
           clickedLayer,
           'visibility'
         );
-        console.log(visibility);
 
         if (visibility === 'visible') {
           map.setLayoutProperty(
@@ -1153,11 +1179,12 @@ map.on('idle', function () {
           }
         }
       };
-      var layers = document.getElementById('lines');
+      var layers = document.getElementById('lineList');
       layers.appendChild(link);
         }
       }
     }
+    loadRefactor();
   })
 
   map.on('load', function(){
@@ -1187,7 +1214,10 @@ map.on('idle', function () {
     var waterlooCoords = jObject.data.features[18].geometry.coordinates;
 
     for(i = 0; i < bakerlooCoords.length; i++){
-      pointGeojson.features[i] = {type: 'Feature', geometry: {type: 'Point', coordinates: bakerlooCoords[i], properties: {title: bakerlooNames[i], description: 'test', class: 'bakerlooM'}}};
+      pointGeojson.features[i] = {type: 'Feature', geometry: {
+        type: 'Point', coordinates: bakerlooCoords[i], properties: {
+          title: bakerlooNames[i], description: 'test', class: 'bakerlooM'
+      }}};
     }
 
     var j = bakerlooCoords.length;
@@ -1311,73 +1341,315 @@ map.on('idle', function () {
     j += waterlooCoords.length;
     barrier11 = j;
 
+    var access;
+    var accessText = ["No Lifts, Escalators or Ramps in this station.",
+                      "This station has Level or Ramped Access.",
+                      "This station has lifts to the street and platform.",
+                      "This station has escalators between the street and station.",
+                      "You can transfer between lines here, but no accessible access to street.",
+                      "This station has both lifts and escalators between the street and station."];
+    var toWrite = "";
     var index = 0;
+    var k = 0;
+    var k2 = 0;
+    var k3 = 0;
+    var k4 = 0;
+    var k5 = 0;
+    var k6 = 0;
+    var k7 = 0;
+    var k8 = 0;
+    var k9 = 0;
+    var k10 = 0;
+    var k11 = 0;
     pointGeojson.features.forEach(function(marker){
       if(index < barrier){
+        if(bakerlooAccess[k] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(bakerlooAccess[k] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(bakerlooAccess[k] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(bakerlooAccess[k] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if (bakerlooAccess[k] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker bakerlooM';
+        el.className = 'marker bakerlooM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(new mapboxgl.Popup({offset:5})
+          .setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + bakerlooZones[k] + '</p>'))
+          .addTo(map);
         index++;
+        k++;
       } else if (index < barrier2){
+        if(centralAccess[k2] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(centralAccess[k2] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(centralAccess[k2] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(centralAccess[k2] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(centralAccess[k2] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker centralM';
+        el.className = 'marker centralM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + centralZones[k2] + '</p>')).addTo(map);
         index++;
+        k2++;
       } else if (index < barrier3){
+        if(circleAccess[k3] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(circleAccess[k3] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(circleAccess[k3] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(circleAccess[k3] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(circleAccess[k3] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker circleM';
+        el.className = 'marker circleM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + circleZones[k3] + '</p>')).addTo(map);
         index++;
+        k3++;
       } else if (index < barrier4){
+        if(districtAccess[k4] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(districtAccess[k4] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(districtAccess[k4] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(districtAccess[k4] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(districtAccess[k4] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker districtM';
+        el.className = 'marker districtM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + districtZones[k4] + '</p>')).addTo(map);
         index++;
+        k4++;
       } else if (index < barrier5){
+        if(hammersmithAccess[k5] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(hammersmithAccess[k5] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(hammersmithAccess[k5] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(hammersmithAccess[k5] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(hammersmithAccess[k5] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker hammersmithM';
+        el.className = 'marker hammersmithM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + hammersmithZones[k5] + '</p>')).addTo(map);
         index++;
+        k5++;
       } else if (index < barrier6){
+        if(jubileeAccess[k6] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(jubileeAccess[k6] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(jubileeAccess[k6] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(jubileeAccess[k6] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(jubileeAccess[k6] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker jubileeM';
+        el.className = 'marker jubileeM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + jubileeZones[k6] + '</p>')).addTo(map);
         index++;
+        k6++;
       } else if (index < barrier7){
+        if(metropolitanAccess[k7] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(metropolitanAccess[k7] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(metropolitanAccess[k7] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(metropolitanAccess[k7] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(metropolitanAccess[k7] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker metropolitanM';
+        el.className = 'marker metropolitanM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + metropolitanZones[k7] + '</p>')).addTo(map);
         index++;
+        k7++;
       } else if (index < barrier8){
+        if(northernAccess[k8] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(northernAccess[k8] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(northernAccess[k8] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(northernAccess[k8] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(northernAccess[k8] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker northernM';
+        el.className = 'marker northernM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + northernZones[k8] + '</p>')).addTo(map);
         index++;
+        k8++;
       } else if (index < barrier9){
+        if(piccadillyAccess[k9] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(piccadillyAccess[k9] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(piccadillyAccess[k9] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(piccadillyAccess[k9] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(piccadillyAccess[k9] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker piccadillyM';
+        el.className = 'marker piccadillyM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + piccadillyZones[k9] + '</p>')).addTo(map);
         index++;
+        k9++;
       } else if (index < barrier10){
+        if(victoriaAccess[k10] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(victoriaAccess[k10] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(victoriaAccess[k10] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(victoriaAccess[k10] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(victoriaAccess[k10] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker victoriaM';
+        el.className = 'marker victoriaM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + victoriaZones[k10] + '</p>')).addTo(map);
         index++;
+        k10++;
       } else {
+        if(waterlooAccess[k11] == 0){
+          access = "access0";
+          toWrite = accessText[0];
+        } else if(waterlooAccess[k11] == 1) {
+          access = "access1";
+          toWrite = accessText[1];
+        } else if(waterlooAccess[k11] == 2) {
+          access = "access2";
+          toWrite = accessText[2];
+        } else if(waterlooAccess[k11] == 3) {
+          access = "access3";
+          toWrite = accessText[3];
+        } else if(waterlooAccess[k11] == 4){
+          access = "access4";
+          toWrite = accessText[4];
+        } else {
+          access = "access5";
+          toWrite = accessText[5];
+        }
         var el = document.createElement('div');
-        el.className = 'marker waterlooM';
+        el.className = 'marker waterlooM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + waterlooZones[k11] + '</p>')).addTo(map);
         index++;
       }
     })

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -19,34 +18,35 @@
     <div class="section test">
       <h2>Text Settings</h2>
       <div class="slidecontainer">
-        <p>Text Size: <span id="demo"></span></p>
+        <p class="test">Text Size: <span id="demo"></span></p>
         <input type="range" min="8" max="36" value="16" class="slider" id="textSizeSlider">
       </div>
       <div>
         <p>Text Colour:</p>
-        <button class="textColourChanger" onclick="setTextColour('black')">Black</button>
-        <button class="textColourChanger" onclick="setTextColour('white')">White</button>
-        <button class="textColourChanger" onclick="setTextColour('red')">Red</button>
-        <button class="textColourChanger" onclick="setTextColour('green')">Green</button>
-        <button class="textColourChanger" onclick="setTextColour('blue')">Blue</button>
-        <button class="textColourChanger" onclick="setTextColour('yellow')">Yellow</button>
-        <button class="textColourChanger" onclick="setTextColour('purple')">Purple</button>
-        <button class="textColourChanger" onclick="setTextColour('brown')">Brown</button>
+        <button class="textColourChanger" onclick="setTextColour('#000000')">Black</button>
+        <button class="textColourChanger" onclick="setTextColour('#FFFFFF')">White</button>
+        <button class="textColourChanger" onclick="setTextColour('#FC7B7B')">Red</button>
+        <button class="textColourChanger" onclick="setTextColour('#7FFC7B')">Green</button>
+        <button class="textColourChanger" onclick="setTextColour('#7BA3FC')">Blue</button>
+        <button class="textColourChanger" onclick="setTextColour('#FCFC7B')">Yellow</button>
+        <button class="textColourChanger" onclick="setTextColour('#C77BFC')">Purple</button>
+        <button class="textColourChanger" onclick="setTextColour('#A07A6B')">Brown</button>
       </div>
     </div>
     <div class="section2 test">
       <h2>Background Settings</h2>
       <p>Background Colour: </p>
-      <button class="bgColourChanger" onclick="setBackgroundColor('black')">Black</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('white')">White</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('red')">Red</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('green')">Green</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('blue')">Blue</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('yellow')">Yellow</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('purple')">Purple</button>
-      <button class="bgColourChanger" onclick="setBackgroundColor('brown')">Brown</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#000000')">Black</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#FFFFFF')">White</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#FC7B7B')">Red</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#7FFC7B')">Green</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#7BA3FC')">Blue</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#FCFC7B')">Yellow</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#C77BFC')">Purple</button>
+      <button class="bgColourChanger" onclick="setBackgroundColor('#A07A6B')">Brown</button>
     </div>
 
     <script src="format.js"></script>
+    <script src="testScript.js"></script>
   </body>
 </html>

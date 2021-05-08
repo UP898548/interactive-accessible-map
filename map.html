@@ -20,28 +20,36 @@
     <div class="mapControls">
       <div class="markerControls test">
         <h2>Marker Controls</h2>
-        <ul>
-          <button onclick="toggleMarkers('bakerlooM')">Bakerloo</button>
-          <button onclick="toggleMarkers('centralM')">Central</button>
-          <button onclick="toggleMarkers('circleM')">Circle</button>
-          <button onclick="toggleMarkers('districtM')">District</button>
-          <button onclick="toggleMarkers('hammersmithM')">Hammersmith</button>
-          <button onclick="toggleMarkers('jubileeM')">Jubilee</button>
-          <button onclick="toggleMarkers('metropolitanM')">Metropolitan</button>
-          <button onclick="toggleMarkers('northernM')">Northern</button>
-          <button onclick="toggleMarkers('piccadillyM')">Piccadilly</button>
-          <button onclick="toggleMarkers('victoriaM')">Victoria</button>
-          <button onclick="toggleMarkers('waterlooM')">Waterloo</button>
+        <ul id="markerList">
+          <button onclick="toggleMarkers('bakerlooM')" class='test'>Bakerloo
+          <button onclick="toggleMarkers('centralM')" class='test'>Central
+          <button onclick="toggleMarkers('circleM')" class='test'>Circle
+          <button onclick="toggleMarkers('districtM')" class='test'>District
+          <button onclick="toggleMarkers('hammersmithM')" class='test'>Hammersmith
+          <button onclick="toggleMarkers('jubileeM')" class='test'>Jubilee
+          <button onclick="toggleMarkers('metropolitanM')" class='test'>Metropolitan
+          <button onclick="toggleMarkers('northernM')" class='test'>Northern
+          <button onclick="toggleMarkers('piccadillyM')" class='test'>Piccadilly
+          <button onclick="toggleMarkers('victoriaM')" class='test'>Victoria
+          <button onclick="toggleMarkers('waterlooM')" class='test'>Waterloo
         </ul>
       </div>
 
       <div class="lineControls test">
         <h2>Line Controls</h2>
-        <ul id="lines"></ul>
+        <ul id="lineList"></ul>
       </div>
     </div>
 
-    <p class="test">Link to London Tube <a href="https://tfl.gov.uk/forms/12387.aspx">Accesibility Guides<a></p>
+    <p class="test" id="accessLink">Link to London Tube <a href="https://tfl.gov.uk/forms/12387.aspx">Accesibility Guides<a></p>
+
+    <div>
+      <ul id="testButtons"></ul>
+    </div>
+
+    <div id="testDiv"></div>
+
     <script src="mapCode.js"></script>
+    <script src="testScript.js"></script>
   </body>
 </html>

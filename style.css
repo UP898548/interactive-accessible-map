@@ -32,7 +32,7 @@ h2 {
   border: darkred 3px solid;
   float: left;
   height: 400px;
-  width: 49.8%;
+  width: 49.6%;
   background-color: white;
   margin-bottom: 5px;
 }
@@ -42,7 +42,7 @@ h2 {
   margin-right: -4px;
   float: right;
   height: 400px;
-  width: 49.8%;
+  width: 49.6%;
   background-color: white;
   margin-bottom: 5px;
 }
@@ -81,6 +81,12 @@ h2 {
   border: darkred 3px solid;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.quick{
+  margin: 20px;
+  font-size: 24px;
 }
 
 #map {
@@ -99,10 +105,53 @@ h2 {
 }
 
 .marker {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    border:1px solid gray;
+    border:3px solid gray;
     background-color:lightblue;
     visibility: hidden;
+}
+
+.access0 {
+  background-color: black;
+}
+
+.access1 {
+  background-color: green;
+}
+
+.access2 {
+  background-color: yellow;
+}
+
+.access3 {
+background-color: orange;
+}
+
+.access4 {
+  background-color: red;
+}
+
+.access5 {
+  background-color: purple;
+}
+
+#markerList {
+  margin: 0;
+  padding: 0;
+}
+
+#lineList {
+  margin: 0;
+  padding: 0;
+}
+
+.testMarker {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border:3px solid gray;
+  background-color:lightblue;
+  visibility: hidden;
 }
