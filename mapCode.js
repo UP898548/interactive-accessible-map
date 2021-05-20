@@ -1388,7 +1388,7 @@ map.on('idle', function () {
         new mapboxgl.Marker(el)
           .setLngLat(marker.geometry.coordinates)
           .setPopup(new mapboxgl.Popup({offset:5})
-          .setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + bakerlooZones[k] + '</p>'))
+          .setHTML('<h3 style="font-size: 32">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + bakerlooZones[k] + '</p>'))
           .addTo(map);
         index++;
         k++;
@@ -1415,7 +1415,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker centralM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + centralZones[k2] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + centralZones[k2] + '</p>')).addTo(map);
         index++;
         k2++;
       } else if (index < barrier3){
@@ -1441,7 +1441,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker circleM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + circleZones[k3] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + circleZones[k3] + '</p>')).addTo(map);
         index++;
         k3++;
       } else if (index < barrier4){
@@ -1467,7 +1467,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker districtM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + districtZones[k4] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + districtZones[k4] + '</p>')).addTo(map);
         index++;
         k4++;
       } else if (index < barrier5){
@@ -1493,7 +1493,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker hammersmithM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + hammersmithZones[k5] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 28">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + hammersmithZones[k5] + '</p>')).addTo(map);
         index++;
         k5++;
       } else if (index < barrier6){
@@ -1519,7 +1519,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker jubileeM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + jubileeZones[k6] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + jubileeZones[k6] + '</p>')).addTo(map);
         index++;
         k6++;
       } else if (index < barrier7){
@@ -1545,7 +1545,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker metropolitanM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + metropolitanZones[k7] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + metropolitanZones[k7] + '</p>')).addTo(map);
         index++;
         k7++;
       } else if (index < barrier8){
@@ -1571,7 +1571,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker northernM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + northernZones[k8] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + northernZones[k8] + '</p>')).addTo(map);
         index++;
         k8++;
       } else if (index < barrier9){
@@ -1597,7 +1597,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker piccadillyM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + piccadillyZones[k9] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + piccadillyZones[k9] + '</p>')).addTo(map);
         index++;
         k9++;
       } else if (index < barrier10){
@@ -1623,7 +1623,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker victoriaM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + victoriaZones[k10] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + victoriaZones[k10] + '</p>')).addTo(map);
         index++;
         k10++;
       } else {
@@ -1649,7 +1649,7 @@ map.on('idle', function () {
         var el = document.createElement('div');
         el.className = 'marker waterlooM ' + access;
 
-        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3>' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p>' + toWrite + '</p>' + '<p>Station Zone: ' + waterlooZones[k11] + '</p>')).addTo(map);
+        new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).setPopup(new mapboxgl.Popup({offset:5}).setHTML('<h3 style="font-size: 22">' + pointGeojson.features[index].geometry.properties.title +'</h3>' + '<p style="font: 24px Helvetica">' + toWrite + '</p>' + '<p style="font: 24px Helvetica">Station Zone: ' + waterlooZones[k11] + '</p>')).addTo(map);
         index++;
       }
     })

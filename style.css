@@ -1,5 +1,9 @@
 #mapid { height: 180px; }
 
+body {
+  font-size: 19;
+}
+
 .Navi {
   list-style-type: none;
   margin: 0;
