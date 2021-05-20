@@ -1,4 +1,7 @@
 # final-project
+
+MUST USE FIREFOX IF RUNNING LOCALLY, OTHERWISE SETTINGS PAGE MAY NOT OPERATE CORRECTLY
+
 Using JS, HTML and CSS to implement an interactive London Underground Map
 
 Will mark off below when each stage is completed
